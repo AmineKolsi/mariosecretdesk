@@ -3,29 +3,24 @@ package tn.mario.moovtn.entities;
 import java.io.Serializable;
 import java.lang.Integer;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
-import javax.persistence.ManyToOne;
 
-/**
- * Entity implementation class for Entity: SubscriptionCard
- *
- */
+
 @Entity
 
 public class SubscriptionCard implements Serializable {
   
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1123123123123L;
 	
 	private Integer id;
 	private Date validityStart;
 	private Date validityEnd;
 	private boolean locked;
 	private boolean expired;
+	private List<Line> lines;
 	
 	
 	private User user;
@@ -74,13 +69,22 @@ public class SubscriptionCard implements Serializable {
 		this.expired = canceled;
 	}
 	
-	@ManyToOne
+	@OneToOne
 	public User getUser() {
 		return user;
 	}
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	@ManyToMany
+	public List<Line> getLines() {
+		return lines;
+	}
+
+	public void setLines(List<Line> lines) {
+		this.lines = lines;
 	}
 	
 	
