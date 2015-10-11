@@ -18,14 +18,19 @@ public class TransportMeanImplementation implements TransportMeanService{
 	EntityManager entityManager;
 
 	@Override
-	public void add(TransportMean transport) {
-		entityManager.persist(transport);
+	public boolean add(TransportMean transport) {
+		if(findBySerial(transport.getSerial())==null){
+			entityManager.persist(transport);
+			return true;
+		}
+		return false;
+		
 		
 	}
 
 	@Override
 	public void delete(TransportMean transport) {
-		entityManager.remove(findById(transport.getId()));
+		entityManager.remove(findBySerial(transport.getSerial()));
 		
 	}
 
@@ -42,9 +47,9 @@ public class TransportMeanImplementation implements TransportMeanService{
 	}
 
 	@Override
-	public TransportMean findById(int id) {
+	public TransportMean findBySerial(String serial) {
 		
-		return entityManager.find(TransportMean.class, id);
+		return entityManager.find(TransportMean.class, serial);
 	}
 	
 	public Boolean isAvailable(Timestamp start, Timestamp end){
@@ -52,5 +57,7 @@ public class TransportMeanImplementation implements TransportMeanService{
 		return null;
 		
 	}
+
+	
 
 }

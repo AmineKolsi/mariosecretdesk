@@ -17,9 +17,9 @@ public class TransportMean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Integer id;
-	private String type;
 	private String serial;
+	private String type;
+	
 	private boolean state;
 	private Set<Rent> rent;
 	
@@ -33,14 +33,7 @@ public class TransportMean implements Serializable {
 	public TransportMean() {
 		super();
 	}   
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	public Integer getId() {
-		return this.id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}   
+	
 	public String getType() {
 		return this.type;
 	}
@@ -56,11 +49,14 @@ public class TransportMean implements Serializable {
 	public void setState(boolean state) {
 		this.state = state;
 	}
+	
+	@Id
 	public String getSerial() {
 		return serial;
 	}
 	public void setSerial(String serial) {
 		this.serial = serial;
 	}
+	
    
 }

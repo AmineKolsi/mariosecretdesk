@@ -10,10 +10,10 @@ import tn.mario.moovtn.entities.TransportMean;
 @Remote
 public interface TransportMeanService {
 	
-	public void add(TransportMean transport);
+	public boolean add(TransportMean transport);
 	public void delete(TransportMean transport);
 	public void update(TransportMean transport);
 	public List<TransportMean> findAll();
-	public TransportMean findById(int id);
+	TransportMean findBySerial(String serial);
 	
 }
