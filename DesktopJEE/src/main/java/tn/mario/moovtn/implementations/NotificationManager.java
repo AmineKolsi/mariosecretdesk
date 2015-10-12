@@ -49,7 +49,7 @@ public class NotificationManager implements NotificationManagerRemote, Notificat
 	@Override
 	public void delete(Notification u) {
 		// TODO Auto-generated method stub
-		em.remove(u);
+		em.remove(em.merge(u));
 		
 	}
 
