@@ -17,8 +17,15 @@ public class Location implements Serializable {
 	private Integer id;
 	private float latitude;
 	private float longitude;
+	private String adress;
 	
 	
+	public String getAdress() {
+		return adress;
+	}
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
 	@Id
 	public Integer getId() {
 		return id;
