@@ -52,6 +52,12 @@ public class NotificationManager implements NotificationManagerRemote, Notificat
 		em.remove(em.merge(u));
 		
 	}
+	@Override
+	public List<Notification> findByLevel(int level) {
+		Query query=em.createQuery("select notif from Notification notif where notif.level = :custlevel")
+				.setParameter("custlevel", level);
+				return query.getResultList();
+	}
 
 	
 
