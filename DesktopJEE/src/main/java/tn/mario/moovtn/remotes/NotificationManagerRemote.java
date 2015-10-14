@@ -13,7 +13,9 @@ public interface NotificationManagerRemote {
 	void add(Notification u);
 	Notification findById(Integer id);
 	List<Notification>getAllNotification();
+	List<Notification>findByLevel(int level);
 	void update(Notification u);
 	void delete(Notification u);
+	
 
 }
