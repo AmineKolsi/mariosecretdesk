@@ -53,5 +53,13 @@ public class UserImplementation implements UserService {
 		User u = (User) query.getResultList().get(0);
 		return u;
 	}
+	public User linebyuser() {
+		Query query = em
+				.createQuery("select u,l from User u,Line l where u member of l.ListUsers ");
+
+		query.setParameter("z", "admin");
+		User u = (User) query.getResultList().get(0);
+		return u;
+	}
 
 }
