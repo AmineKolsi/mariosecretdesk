@@ -42,14 +42,22 @@ public class TransportMeanImplementation implements TransportMeanService{
 
 	@Override
 	public List<TransportMean> findAll() {
-		Query query = entityManager.createQuery("select tm from TransportMean tm");
-		return query.getResultList();
+		try {
+			Query query = entityManager.createQuery("select tm from TransportMean tm");
+			return query.getResultList();
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@Override
 	public TransportMean findBySerial(String serial) {
 		
-		return entityManager.find(TransportMean.class, serial);
+		try {
+			return entityManager.find(TransportMean.class, serial);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 	
 	public Boolean isAvailable(Timestamp start, Timestamp end){
